@@ -1,0 +1,113 @@
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+{% load crispy_forms_tags %}
+{% load crispy_forms_field %}
+<div class="container py-5">
+    <div class="row">
+        <div class="col-sm-3"></div>
+        <div class="col-sm-9 float-end">
+            <div class="card bg-light opacity-100">
+                <div class="card-header text-dark-green fs-5">
+                    Search
+                </div>
+                <div class="container">
+                    <form action="/" method="post" class="form-floating form-inline">
+                        {% csrf_token %}
+                        <p></p>
+                        <div class="row">
+                            <div class="col-6 border-end">
+                                <label for="area">Area</label>
+                            </div>
+                            <div class="col-6">
+                                <label for="b_type">Type</label>
+                            </div>
+                        </div>
+                        <div class="row border-bottom">
+                            <div class="col-6 border-end">
+                                {{ form.area|as_crispy_field }}
+                            </div>
+
+                            <div class="col-sm-6">{{ form.b_type|as_crispy_field }}</div>
+                        </div>
+                        <div class="row">
+
+
+
+                            <div class="col-12">
+                                <label for="min_price">Price</label>
+                            </div>
+                        </div>
+                        <div class="row border-bottom">
+
+
+                            <div class="col-sm-5">
+                                <!-- {% crispy_addon form.min_price prepend="$" append=",000" %} -->
+                                {% crispy_addon form.min_price prepend="$" append=",000" %}
+
+                            </div>
+                            <div class="col-sm-2 pt-2 ps-5"><span class="align-middle">to</span></div>
+                            <div class="col-sm-5">
+                                {% crispy_addon form.max_price prepend="$" append=",000" %}
+                            </div>
+
+
+                        </div>
+                        <div class="row">
+                            <div class="col-7 d-none border-end" id="total_floor_label">
+                                <label for="min_total_floor">Total Floor</label>
+                            </div>
+                            <div class="col-7 border-end" id="floor_label">
+                                <label for="min_floor_no">Floor</label>
+                            </div>
+                            <div class="col-5">
+                                <label for="min_age">Age</label>
+                            </div>
+                        </div>
+                        <div class="row">
+
+                            <div class="col-sm-3 d-none" id="total_floor_min">
+                                {{ form.min_total_floor|as_crispy_field }}
+                            </div>
+                            <div class="col-sm-1 pt-2 ps-3 d-none" id="total_floor_to"><span
+                                    class="align-middle">to</span></div>
+                            <div class="col-sm-3 d-none border-end" id="total_floor_max">
+                                {{ form.max_total_floor|as_crispy_field }}
+                            </div>
+                            <div class="col-sm-3" id="floor_min">
+                                {{ form.min_floor_no|as_crispy_field }}
+                            </div>
+                            <div class="col-sm-1 pt-2 ps-3" id="floor_to"><span class="align-middle">to</span></div>
+                            <div class="col-sm-3 border-end" id="floor_max">
+                                {{ form.max_floor_no|as_crispy_field }}
+                            </div>
+
+
+
+                            <div class="col-sm-2">
+
+                                {{ form.min_age|as_crispy_field }}
+                            </div>
+                            <div class="col-sm-1 pt-2 ps-3"><span class="align-middle">to</span></div>
+                            <div class="col-sm-2">
+                                {{ form.max_age|as_crispy_field }}
+                            </div>
+
+                        </div>
+                        <div id='form-errors'>{{ form_errors }}</div>
+                        <input type="submit" class="btn btn-secondary" value="Search">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <p></p>
+</div>
+
+<script>
+    var input = document.getElementById('id_b_type').value;
+    setTimeout(() => {
+        typeSelected(input);
+    }, 50);
+    console.log(input+"------");
+</script>

@@ -1,0 +1,125 @@
+<form class="form-inline">
+    <div class="row">
+    <div class="col-auto">
+        <input type="checkbox" class="btn-check" id="btn-check-police" autocomplete="off">
+        <label class="btn btn-outline-secondary" for="btn-check-police">Police</label>
+    </div>
+    <div class="col-auto">
+        <input type="checkbox" class="btn-check" id="btn-check-university" autocomplete="off">
+        <label class="btn btn-outline-secondary" for="btn-check-university">University</label>
+    </div>
+    <div class="col-auto">
+        <input type="checkbox" class="btn-check" id="btn-check-senior" autocomplete="off">
+        <label class="btn btn-outline-secondary" for="btn-check-senior">Senior High School</label>
+    </div>
+    <div class="col-auto">
+        <input type="checkbox" class="btn-check" id="btn-check-junior" autocomplete="off">
+        <label class="btn btn-outline-secondary" for="btn-check-junior">Junior High School</label>
+    </div>
+    <div class="col-auto">
+        <input type="checkbox" class="btn-check" id="btn-check-elementary" autocomplete="off">
+        <label class="btn btn-outline-secondary" for="btn-check-elementary">Elementary School</label>
+    </div>
+    <div class="col-auto">
+        <input type="checkbox" class="btn-check" id="btn-check-activities" autocomplete="off">
+        <label class="btn btn-outline-secondary" for="btn-check-activities">Activities</label>
+    </div>
+</div>
+<div class="row pt-2">
+    <div class="col-auto">
+        <input type="checkbox" class="btn-check" id="btn-check-hospital" autocomplete="off">
+        <label class="btn btn-outline-secondary" for="btn-check-hospital">Hospital</label>
+    </div>
+    <div class="col-auto">
+        <input type="checkbox" class="btn-check" id="btn-check-park" autocomplete="off">
+        <label class="btn btn-outline-secondary" for="btn-check-park">Park</label>
+    </div>
+    <div class="col-auto">
+        <input type="checkbox" class="btn-check" id="btn-check-religious" autocomplete="off">
+        <label class="btn btn-outline-secondary" for="btn-check-religious">Religious Activities</label>
+    </div>
+    <div class="col-auto">
+        <input type="checkbox" class="btn-check" id="btn-check-scenic" autocomplete="off">
+        <label class="btn btn-outline-secondary" for="btn-check-scenic">Scenic Spot</label>
+    </div>
+    <div class="col-auto">
+        <input type="checkbox" class="btn-check" id="btn-check-mrt" autocomplete="off">
+        <label class="btn btn-outline-secondary" for="btn-check-mrt">MRT</label>
+    </div>
+</div>
+</form>
+
+<script>
+// Select all checkboxes with the name 'settings' using querySelectorAll.
+var checkboxes = document.querySelectorAll("input[type=checkbox]");
+let enabledSettings = []
+var mapTag = {'btn-check-police':'o','btn-check-university':'u','btn-check-senior':'s','btn-check-junior':'j',
+                'btn-check-elementary':'e', 'btn-check-activities':'a','btn-check-hospital':'h',
+                'btn-check-park':'p','btn-check-religious':'r','btn-check-scenic':'c','btn-check-mrt':'m'}
+
+
+var reverseMapTag = {o:'btn-check-police',u:'btn-check-university',s:'btn-check-senior',j:'btn-check-junior',
+e:'btn-check-elementary', a:'btn-check-activities',h:'btn-check-hospital',
+p:'btn-check-park',r:'btn-check-religious',c:'btn-check-scenic',m:'btn-check-mrt'}
+
+var queryString = window.location.search;
+var urlParams = new URLSearchParams(queryString);
+// var data = JSON.parse(document.getElementById('p').textContent);
+console.log(document.getElementById('post').innerText);
+if(urlParams.has('pa')){
+    var pa = urlParams.get('pa').split('');
+    console.log(pa);
+    for(i in pa){
+        document.getElementById(reverseMapTag[pa[i]]).checked = true;
+    }
+    
+}
+checkboxes.forEach(function(checkbox) {
+  checkbox.addEventListener('change', function() {
+    
+    var queryString = window.location.search;
+    var urlParams = new URLSearchParams(queryString);
+
+    if(document.getElementById('post').innerText==1){
+        urlParams.append('p','1');
+    }
+    if(urlParams.has('page')){
+        urlParams.delete('page');
+    }
+    if(checkbox.checked){
+        if(urlParams.has('pa')){
+            if (urlParams.get('pa').indexOf(mapTag[checkbox.id]) < 0)
+            {
+                var output = urlParams.get('pa')+mapTag[checkbox.id];
+                urlParams.set('pa',output);
+            }
+            
+        }else{
+            urlParams.append('pa', mapTag[checkbox.id]);
+        }
+    }else{
+        if(urlParams.has('pa')){
+            if (urlParams.get('pa').indexOf(mapTag[checkbox.id]) > -1)
+            {
+                var output = urlParams.get('pa').replace(mapTag[checkbox.id],'');
+                if(output == ''){
+                    urlParams.delete('pa');
+                }else{
+                    urlParams.set('pa',output);
+                }
+                
+            }
+        }
+    }
+
+    var tmp = window.location;
+    
+    if(tmp.hash == ''){
+        tmp.hash = '#public-area';
+    }
+    tmp.search = urlParams.toString();
+    
+
+  })
+});
+</script>

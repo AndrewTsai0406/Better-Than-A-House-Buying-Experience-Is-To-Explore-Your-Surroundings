@@ -1,0 +1,106 @@
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+{% load crispy_forms_tags %}
+{% load crispy_forms_field %}
+<!DOCTYPE html>
+<html>
+
+
+<head>
+  {{ radial|json_script:"radial" }}
+  {{ decrete|json_script:"decrete" }}
+  {{ post|json_script:"post" }}
+  <!-- stand for load some static files -->
+  {% include 'head.html' %}
+</head>
+
+<header calss="navbar-header fixed-top">
+  <div class="align-items-center">
+    <a class="d-sm-inline-block py-2 align-items-center text-green text-decoration-none px-2" href="/"
+      aria-label="Product">
+      <span class="fs-4 align-items-center">R U Josephine</span>
+    </a>
+    <a class=" py-2 d-none d-sm-inline-block text-decoration-none px-3 text-muted " href="#search-area">Search</a>
+    <a class=" py-2 d-none d-sm-inline-block text-decoration-none px-3 text-muted " href="#public-area">Filter</a>
+    <a class=" py-2 d-none d-sm-inline-block text-decoration-none px-3 text-muted " href="#map-area">Map</a>
+    <a class=" py-2 d-none d-sm-inline-block text-decoration-none text-muted " href="#forces">Graph</a>
+  </div>
+</header>
+
+<body class="py-5">
+  <div id="search-area">
+    {% include 'search_area.html' %}
+  </div>
+  <div class="bg-light">
+    <div class="container pt-4 py-3 text-center" id="public-area">
+      <h1 class="display-4 text-green">Filter</h1>
+      {% include 'public_area.html' %}
+    </div>
+  </div>
+  <div class="color-green">
+    <div class="px-2" id="map-area">
+      <h1 class="display-4 text-light py-1 text-center">Map</h1>
+      <div id="map" class="justify-content-center"></div>
+      <div id="records">
+        {% include 'data_area.html' %}
+      </div>
+    </div>
+  </div>
+  <!-- <div id='forces'></div> -->
+  <div class="bg-light py-3">
+    <div class="container " id="graph-area">
+
+      <h1 class="display-4 text-green text-center">Graph</h1>
+      <div class="container py-2" id="graph-db">
+        {% include 'graph_db.html' %}
+      </div>
+      {% include 'graph.html' %}
+
+    </div>
+  </div>
+
+</body>
+
+<!--Footer-->
+<div class="justify-content-center text-light">
+	<footer>
+		<div class="row justify-content-center py-5">
+			<div class="col-11">
+				<div class="row">
+					<div class="col-md-8">
+						<h3 class="mb-md-0 mb-5 bold-text text-uppercase">R U Josephine.</h3>
+						<p>101, Section 2, Guangfu Road, East District</p>
+					</div>
+
+				</div>
+
+				<div class="row">
+						<div class="col-xl col-md col-sm col-auto order-1">
+							<h5 class="mt-55 mt-2 bold-text">金藜軒</h5><small>lihsuan@gapp.nthu.edu.tw</small>
+						</div>
+
+						<div class="col-xl col-md col-sm col-auto order-1">
+							<h5 class="mt-55 mt-2 bold-text">蔡濬安</h5><small>tic294boon901@gmail.com</small>
+						</div>
+
+						<div class="col-xl col-md col-sm col-auto order-1">
+							<h5 class="mt-55 mt-2 bold-text">林培權</h5><small>asd81310@gmail.com</small>
+						</div>
+
+						<div class="col-xl col-md col-sm col-auto order-1">
+							<h5 class="mt-55 mt-2 bold-text">阮英祿</h5><small>al.anhloc.nguyen@gmail.com</small>
+						</div>
+
+						<div class="col-xl col-md col-sm col-auto order-1">
+							<h5 class="mt-55 mt-2 bold-text">洪千惠</h5><small>carolhch@gapp.nthu.edu.tw</small>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+</div>
+
+</html>

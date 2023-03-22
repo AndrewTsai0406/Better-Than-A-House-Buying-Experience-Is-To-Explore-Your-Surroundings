@@ -1,0 +1,44 @@
+/*general */
+text {
+  font: 10px sans-serif;
+}
+
+.circle-image {
+  border-radius: "50%";
+  background-color: pink;
+}
+
+.node text {
+  pointer-events: none;
+  font: 6px sans-serif;
+}
+
+circle.fixed {
+  fill: #f0f0f0;
+}
+
+.tooltip {
+  visibility: hidden;
+  padding: 0;
+  margin: 0;
+
+  position: absolute;
+  text-align: left;
+  border: 0.5px solid lightgrey;
+  padding: 5px;
+  font: 10px sans-serif;
+  background: white;
+  border-radius: 4px;
+  pointer-events: none;
+  width: auto;
+  height: auto;
+  z-index: 99 !important;
+  opacity: 100 !important;
+}
+
+#forces{
+  border-radius: 5px;
+  border: 1px dashed #89b0ae;
+  width: 100%;
+  height: 100%;
+}

@@ -1,0 +1,70 @@
+<div class="col-sm-12 justify-content-center py-2">
+    {% if radial %}
+
+    {% for r in radial %}
+    <!-- <div class="item"> -->
+    <div class="card item-hover item" onclick="centerLocation('{{r.id}}')">
+        <div class="card-header">
+            No.<span class="text-dark-green">{{ r.id }}</span> Building
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">{{ r.address }}</li>
+            <li class="d-none">{{ r.lat }}, {{ r.lng }}</li>
+            <li class="list-group-item">
+                <div class="row">
+                    <div class="col-4 text-dark-green border-end">Total Price </div>
+                    <div class="col-8">{{ r.price }}</div>
+                </div>
+            </li>
+            <li class="list-group-item">
+                <div class="row">
+                    <div class="col-4 text-dark-green border-end">Type </div>
+                    <div class="col-8">{{ r.b_type }}</div>
+                </div>
+            </li>
+            {% if r.b_type == "Townhouse" %}
+            <li class="list-group-item">
+                <div class="row">
+                    <div class="col-4 text-dark-green border-end">Total Floor </div>
+                    <div class="col-8">{{ r.total_floor }}</div>
+                </div>
+            </li>
+            {% else %}
+            <li class="list-group-item">
+                <div class="row">
+                    <div class="col-4 text-dark-green border-end">Floor </div>
+                    <div class="col-8">{{ r.trans_floor }}</div>
+                </div>
+            </li>
+            {% endif %}
+            <li class="list-group-item">
+                <div class="row">
+                    <div class="col-4 text-dark-green border-end">Age </div>
+                    <div class="col-8">{{ r.age }}</div>
+                </div>
+            </li>
+            <li class="list-group-item">
+                {% for c in r.child %}
+                {% if c.name %}
+                <span class="badge rounded-pill bg-success">{{c.subtype}}</span>
+                {% endif %}
+                {% endfor %}
+            </li>
+        </ul>
+    </div>
+    <!-- </div> -->
+    <p></p>
+
+
+    {% endfor %}
+
+
+    <!-- Page generation -->
+    <div class="col-sm-8 justify-content-center item align-items-center px-4">
+        {% include 'page.html' %}
+    </div>
+
+    {% else %}
+    There are no records in the system
+    {% endif %}
+</div>

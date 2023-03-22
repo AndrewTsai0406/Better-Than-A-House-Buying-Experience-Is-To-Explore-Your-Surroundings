@@ -1,0 +1,12 @@
+Django==3.2.3
+django-bootstrap-v5==1.0.8
+djangorestframework==3.12.4
+google-api-core==1.28.0
+google-api-python-client==2.5.0
+google-auth==1.29.0
+google-auth-httplib2==0.1.0
+google-auth-oauthlib==0.4.4
+google-pasta==0.2.0
+googleapis-common-protos==1.53.0
+psycopg2==2.9.1
+crispy-bootstrap5
