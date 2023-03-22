@@ -6,7 +6,7 @@ Transparency of the real estate market is crucial for a stable economy, and it i
 
 # **Project Flowchart**
 
-![.fig/Screenshot 2023-03-22 at 21.40.21.png](Better%20Than%20A%20House%20Buying%20Experience%20Is%20To%20Explor%202c2fbc8ddf8f48099a79e945f985cb14/Screenshot_2023-03-22_at_21.40.21.png)
+![Screenshot 2023-03-22 at 21.40.21.png](Better%20Than%20A%20House%20Buying%20Experience%20Is%20To%20Explor%202c2fbc8ddf8f48099a79e945f985cb14/fig/Screenshot_2023-03-22_at_21.40.21.png)
 
 # **Data Collections and Database Constructions**
 
@@ -14,9 +14,9 @@ The goal of this project was to show the historical transactions not only based 
 
 The reason why we targeted Taichung specifically is because of the fact that they are more open in terms of the releasing of their data as compared to other major cities in Taiwan. (Table 1) shows the types of public places/activities the website interacts with in our project.
 
-![.fig/Screenshot 2023-03-22 at 21.41.46.png](Better%20Than%20A%20House%20Buying%20Experience%20Is%20To%20Explor%202c2fbc8ddf8f48099a79e945f985cb14/Screenshot_2023-03-22_at_21.41.46.png)
+![Screenshot 2023-03-22 at 21.41.46.png](Better%20Than%20A%20House%20Buying%20Experience%20Is%20To%20Explor%202c2fbc8ddf8f48099a79e945f985cb14/fig/Screenshot_2023-03-22_at_21.41.46.png)
 
-![.fig/Screenshot 2023-03-22 at 21.42.06.png](Better%20Than%20A%20House%20Buying%20Experience%20Is%20To%20Explor%202c2fbc8ddf8f48099a79e945f985cb14/Screenshot_2023-03-22_at_21.42.06.png)
+![Screenshot 2023-03-22 at 21.42.06.png](Better%20Than%20A%20House%20Buying%20Experience%20Is%20To%20Explor%202c2fbc8ddf8f48099a79e945f985cb14/fig/Screenshot_2023-03-22_at_21.42.06.png)
 
 - **PostgreSQL**
 
@@ -27,7 +27,7 @@ Loading all these files into the database does take time and effort considering 
 To build the graph dataset, first we need to build each kind of node with its corresponding dataset. Either the houses or the public facilities are the nodes. For example, we convert the university dataset to the university nodes, and convert the houses from the actual price registration in Taichung to house nodes. Then, we use distance relation to build the edges of the graph. All the edges connect one house node and one public facility node. If an edge exists, it means the public facility is nearby the house. In practice, we regard the value of proximity according to different targets. Therefore, each kind of public facility deserves a different definition of proximity. We use the Postgis function , *DWithin(geom_1, geom_2, distance)*
 , to calculate the proximity, and the criterias are listed in Table 2. The construction process is time consuming because we have over a hundred thousand nodes and about five hundred thousand relations in our graph database.
 
-![.fig/Screenshot 2023-03-22 at 21.43.20.png](Better%20Than%20A%20House%20Buying%20Experience%20Is%20To%20Explor%202c2fbc8ddf8f48099a79e945f985cb14/Screenshot_2023-03-22_at_21.43.20.png)
+![Screenshot 2023-03-22 at 21.43.20.png](Better%20Than%20A%20House%20Buying%20Experience%20Is%20To%20Explor%202c2fbc8ddf8f48099a79e945f985cb14/fig/Screenshot_2023-03-22_at_21.43.20.png)
 
 # **Website Layout**
 
@@ -35,11 +35,11 @@ We decided to use Bootstrap as part of the front-end framework, which is open-so
 
 In our task, the data consists of different types of objects and multiple relative attributes. To elaborate on the data as well as to bring a clearer idea to the users, we add more interactivity to the website by adopting D3.js. D3.js is a JavaScript library for manipulating documents based on data, equipped with powerful visualization components and a data-driven approach to DOM (Document Object Model) manipulation. By modeling the query result and using proper visualization methods, we are able to enlighten the users with constructive information. The details of each section in the website layout is described as follows.
 
-![.fig/Screenshot 2023-03-22 at 21.44.16.png](Better%20Than%20A%20House%20Buying%20Experience%20Is%20To%20Explor%202c2fbc8ddf8f48099a79e945f985cb14/Screenshot_2023-03-22_at_21.44.16.png)
+![Screenshot 2023-03-22 at 21.44.16.png](Better%20Than%20A%20House%20Buying%20Experience%20Is%20To%20Explor%202c2fbc8ddf8f48099a79e945f985cb14/fig/Screenshot_2023-03-22_at_21.44.16.png)
 
-![.fig/Screenshot 2023-03-22 at 21.44.30.png](Better%20Than%20A%20House%20Buying%20Experience%20Is%20To%20Explor%202c2fbc8ddf8f48099a79e945f985cb14/Screenshot_2023-03-22_at_21.44.30.png)
+![Screenshot 2023-03-22 at 21.44.30.png](Better%20Than%20A%20House%20Buying%20Experience%20Is%20To%20Explor%202c2fbc8ddf8f48099a79e945f985cb14/fig/Screenshot_2023-03-22_at_21.44.30.png)
 
-![.fig/Screenshot 2023-03-22 at 21.44.44.png](Better%20Than%20A%20House%20Buying%20Experience%20Is%20To%20Explor%202c2fbc8ddf8f48099a79e945f985cb14/Screenshot_2023-03-22_at_21.44.44.png)
+![Screenshot 2023-03-22 at 21.44.44.png](Better%20Than%20A%20House%20Buying%20Experience%20Is%20To%20Explor%202c2fbc8ddf8f48099a79e945f985cb14/fig/Screenshot_2023-03-22_at_21.44.44.png)
 
 - **Search Block**
 
@@ -47,31 +47,31 @@ The search block of the website is for users to select the houses they are looki
 
 Because of the limitation of capacity and time, we finally changed to Django’s form functionality, which simplifies and automates the whole process of handling the search-block form, including preparing and restructuring data to make it ready for rendering, creating HTML forms for the data, receiving and processing submitted forms and data from users. (Figure 5)
 
-![.fig/Screenshot 2023-03-22 at 21.45.53.png](Better%20Than%20A%20House%20Buying%20Experience%20Is%20To%20Explor%202c2fbc8ddf8f48099a79e945f985cb14/Screenshot_2023-03-22_at_21.45.53.png)
+![Screenshot 2023-03-22 at 21.45.53.png](Better%20Than%20A%20House%20Buying%20Experience%20Is%20To%20Explor%202c2fbc8ddf8f48099a79e945f985cb14/fig/Screenshot_2023-03-22_at_21.45.53.png)
 
 - **Filter of Public Area**
 
 With the main concept of our project, we further add a filter to let users select which public facilities they would like to have nearby. With this filter, users could choose the environment they want to live in, considering more about their life quality, children’s education, and so on. Separated from the previous search block, the filter block will further pick the data that contains the selected public area from the searching result and show the more detailed data for users. This part has another form format, it filters the data every time users click a label. As shown in Figure 6, we have 11 conditions. Every kind of “nearby” public area is defined by different distances.
 
-![.fig/Screenshot 2023-03-22 at 21.46.31.png](Better%20Than%20A%20House%20Buying%20Experience%20Is%20To%20Explor%202c2fbc8ddf8f48099a79e945f985cb14/Screenshot_2023-03-22_at_21.46.31.png)
+![Screenshot 2023-03-22 at 21.46.31.png](Better%20Than%20A%20House%20Buying%20Experience%20Is%20To%20Explor%202c2fbc8ddf8f48099a79e945f985cb14/fig/Screenshot_2023-03-22_at_21.46.31.png)
 
 - **Display the Data and Google Map Marker**
 
 For better displaying the data, we combine the Google Map with plain data and graph visualization that will be discussed in the next part. Figure 7 is the layout of our data display. After getting the data from our back-end, we will call Google Map Api to get the Google Map data and the authorization to convert the data to markers and show them in the map. And for more details about the houses, we will show them on the right side. Moreover, according to our topic, we care about the surrounding of the houses, so we show the public area near the houses as tags to let them have a first glimpse of their surroundings. Besides the tags, we do a small trick to let users move the specific house to the center in Google Map by clicking on data.
 
-![.fig/Screenshot 2023-03-22 at 21.47.14.png](Better%20Than%20A%20House%20Buying%20Experience%20Is%20To%20Explor%202c2fbc8ddf8f48099a79e945f985cb14/Screenshot_2023-03-22_at_21.47.14.png)
+![Screenshot 2023-03-22 at 21.47.14.png](Better%20Than%20A%20House%20Buying%20Experience%20Is%20To%20Explor%202c2fbc8ddf8f48099a79e945f985cb14/fig/Screenshot_2023-03-22_at_21.47.14.png)
 
 - **Graph Visualization**
 
 After getting the query results of the recommended houses, which are built into the form of .json, we further visualize the result by providing a D3.js graph to show the surrounding of the houses. In the graph, each node is either a house or a public facility; each edge connects a house and its nearby public facilities. As shown in Figure 8, our graph not only displays the vital function with the eight types of public facilities, but also gives a closer look at the locality of the recommended houses, for they scatter around the whole Taichung area. For example, if we focus on the universities, 5 houses are near 國立中興大學, 2 houses are near 國立台中教育大學, 3 houses are near 亞洲大學, 東海大學, and 國立勤益科技大學, respectively. It is easier for users to make decisions according to their preferences for the residential environment, instead of just the affordability and requirement for the houses.
 
-![.fig/Screenshot 2023-03-22 at 21.47.51.png](Better%20Than%20A%20House%20Buying%20Experience%20Is%20To%20Explor%202c2fbc8ddf8f48099a79e945f985cb14/Screenshot_2023-03-22_at_21.47.51.png)
+![Screenshot 2023-03-22 at 21.47.51.png](Better%20Than%20A%20House%20Buying%20Experience%20Is%20To%20Explor%202c2fbc8ddf8f48099a79e945f985cb14/fig/Screenshot_2023-03-22_at_21.47.51.png)
 
 - **Neo4j Desktop**
 
 Neo4j, being one of the requirements of this project, had us really think about its potential in the demo and how it can better assist us to find an ideal house via graph exploration. Neo4j has a strong presentation interface named Noe4j browser, which can express the data relationship with graphs using cypher query. Graph databases store nodes and relationships instead of tables, so here we set the houses and public facilities as nodes that contain the relative information for their attributes. For people who didn’t know cypher, we set a default query which displays the selected house and its nearby public facilities. Using the Neo4j browser can make users not only see the relationship with the graph but also check the attributes of each node. For example, if we want to check the information of a school near a house, we can just click that node and we will see the information just like the school website or telephone.
 
-![.fig/Screenshot 2023-03-22 at 21.48.38.png](Better%20Than%20A%20House%20Buying%20Experience%20Is%20To%20Explor%202c2fbc8ddf8f48099a79e945f985cb14/Screenshot_2023-03-22_at_21.48.38.png)
+![Screenshot 2023-03-22 at 21.48.38.png](Better%20Than%20A%20House%20Buying%20Experience%20Is%20To%20Explor%202c2fbc8ddf8f48099a79e945f985cb14/fig/Screenshot_2023-03-22_at_21.48.38.png)
 
 # **Backend Support**
 
@@ -91,4 +91,4 @@ After nearly two months of intensive learning for this project, we have implemen
 
 # **(Appendix) Database schema**
 
-![.fig/Screenshot 2023-03-22 at 21.49.56.png](Better%20Than%20A%20House%20Buying%20Experience%20Is%20To%20Explor%202c2fbc8ddf8f48099a79e945f985cb14/Screenshot_2023-03-22_at_21.49.56.png)
+![Screenshot 2023-03-22 at 21.49.56.png](Better%20Than%20A%20House%20Buying%20Experience%20Is%20To%20Explor%202c2fbc8ddf8f48099a79e945f985cb14/fig/Screenshot_2023-03-22_at_21.49.56.png)
